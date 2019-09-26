@@ -1,4 +1,4 @@
-title: C++ Project
+title: Manejo dinámico de memoria y Polimorfismo
 plan:
 - title: Punteros en C++
   statement: markdowns/parte1.md
