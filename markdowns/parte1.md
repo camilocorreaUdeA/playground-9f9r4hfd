@@ -65,6 +65,32 @@ int main()
     return 0;
 }
 ```
+# Acceso a miembros de clase mediante puntero
+
+Para acceder a los miembros de clase de un objeto a través de un puntero se utiliza el operador flecha `->` en lugar del operador punto `.`, obviamente el acceso con operador flecha sigue respetando los niveles de acceso establecidos en la definición de la clase. El siguiente ejemplo ilustra el uso del operador flecha:
+
+```C++ runnable
+#include<iostream>
+using namespace std;
+
+class MiClase
+{
+    int x;
+    public:
+    MiClase(int n):x(n){}
+    void printX(){cout<<"El valor de x es: "<<x<<endl;}
+};
+
+int main()
+{
+    MiClase obj(15);  //Un objeto cualquiera
+    MiClase *ptr_obj = &obj;  //Apuntando un puntero al objeto obj
+    
+    obj.printX(); // Acceso a un miembro a través del objeto
+    ptr_obj->printX();  //Accesso a un miembro a través del puntero
+    return 0;
+}
+```
 
 
 
