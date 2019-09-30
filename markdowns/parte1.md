@@ -105,7 +105,7 @@ using namespace std;
 int main()
 {
     int array[3] = {15, 35, 55};
-    int *ptr = &array;
+    int *ptr = array;  // No se usa el operador '&' porque los arreglos se comportan como punteros 
     
     cout<<"Direccion almacenada por ptr: "<<ptr<<endl;
     cout<<"Valor en la direccion almacenada por ptr: "<<*ptr<<endl;
