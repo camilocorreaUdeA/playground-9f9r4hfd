@@ -2,6 +2,8 @@ title: Manejo dinámico de memoria y Polimorfismo (Práctica 4)
 plan:
 - title: Punteros en C++
   statement: markdowns/parte1.md
+- title:  Asignación y liberación dinámica de memoria
+  statement: markdowns/parte2.md
 projects:
   cpp:
     root: /cpp-project
