@@ -96,6 +96,31 @@ int main()
 ```
 # Aritmética de punteros
 
+Los punteros almacenan un valor que corresponde a una dirección de memoria y el lenguaje de programación C++ permite que un puntero pueda recibir una nueva dirección de memoria, es decir que sea apuntado a otra variable. Es claro que esto último solo se prodra lograr si la nueva posición de memoria almacena un dato del mismo tipo del puntero o sí se hace una conversión explícita del tipo de dato del puntero. Para poder desplazar un puntero por la memoria C++ permite ejecutar los operadores de adición y sustracción en los punteros, por tanto la dirección que almacena el puntero se puede incrementar o decrementar de acuerdo a la operación que se involucre al puntero. Está permitido el uso de los siguientes operadores: `+`, `-`, `++` y `--` para ejecutar operaciones de aritmética de punteros. Observe el siguiente ejemplo que ilustra el concepto:
+
+```C++ runnable
+#include<iostream>
+using namespace std;
+
+int main()
+{
+    int var1 = 5;
+    int var2 = 10;
+    float var3 = 15.55;
+    int *ptr = &var1;
+    
+    cout<<"Direccion almacenada por ptr: "<<ptr<<endl;
+    cout<<"Valor en la direccion almacenada por ptr: "<<*ptr<<endl;
+    cout<<"Direccion almacenada por ptr + 1: "<<ptr+1<<endl;
+    cout<<"Valor en la direccion almacenada por ptr + 1: "<<*(ptr+1)<<endl;
+    cout<<"Direccion almacenada por ptr + 2: "<<ptr+2<<endl;
+    cout<<"Valor en la direccion almacenada por ptr + 2: "<<*((float*)(ptr+1))<<endl;
+    
+    return 0;
+}
+
+```
+
 ```C++ runnable
 #include<iostream>
 using namespace std;
