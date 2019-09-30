@@ -43,7 +43,7 @@ int main()
     return 0;
 }
 ```
-Se puede acceder mediante el puntero al valor que está almacenado en la dirección de memoria (la que está almacenada en el puntero por supuesto) utilizando el operador `*`. Pruebe el ejemplo a continuación:
+Se puede acceder (leer/modificar) mediante el puntero al valor que está almacenado en la dirección de memoria (la que está almacenada en el puntero por supuesto) utilizando el operador `*`. Pruebe el ejemplo a continuación:
 
 ```C++ runnable
 #include<iostream>
@@ -57,9 +57,16 @@ int main()
     cout<<"Valor de la variable var: "<<var<<endl;
     cout<<"Direccion de la variable var: "<<&var<<endl;
     cout<<"Valor de lo que hay almacenado en la direccion de memoria "<<ptr_var<<" : "<<*ptr_var<<endl;
+    
+    // Modificando el valor a través del puntero:
+    *ptr_var = 100.25;
+    cout<<"Valor de la variable var: "<<var<<endl;
+    
     return 0;
 }
 ```
+
+
 
 
 
