@@ -104,17 +104,15 @@ using namespace std;
 
 int main()
 {
-    int var1 = 5;
-    int var2 = 10;
-    float var3 = 15.55;
-    int *ptr = &var1;
+    int array[3] = {15, 35, 55};
+    int *ptr = &array;
     
     cout<<"Direccion almacenada por ptr: "<<ptr<<endl;
     cout<<"Valor en la direccion almacenada por ptr: "<<*ptr<<endl;
     cout<<"Direccion almacenada por ptr + 1: "<<ptr+1<<endl;
     cout<<"Valor en la direccion almacenada por ptr + 1: "<<*(ptr+1)<<endl;
     cout<<"Direccion almacenada por ptr + 2: "<<ptr+2<<endl;
-    cout<<"Valor en la direccion almacenada por ptr + 2: "<<*((float*)(ptr+1))<<endl;
+    cout<<"Valor en la direccion almacenada por ptr + 2: "<<*(ptr+2)<<endl;
     
     return 0;
 }
