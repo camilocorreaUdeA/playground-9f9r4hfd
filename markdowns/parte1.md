@@ -138,11 +138,11 @@ int main()
 	cout<<*((char*)ptr_str)<<endl;  
 	cout<<*((double*)ptr_str+1)<<endl;
 	cout<<*((short*)ptr_str+8)<<endl;
-	cout<<*(((float*)ptr_str+5))<<endl;
-	cout<<*(((long long int*)ptr_str+3))<<endl;
-	cout<<*(((char*)ptr_str+32))<<endl;
-	cout<<*(((int*)ptr_str+9))<<endl;
-	cout<<*(((double*)ptr_str+5))<<endl;
+	cout<<*((float*)ptr_str+5)<<endl;
+	cout<<*((long long int*)ptr_str+3)<<endl;
+	cout<<*((char*)ptr_str+32)<<endl;
+	cout<<*((int*)ptr_str+9)<<endl;
+	cout<<*((double*)ptr_str+5)<<endl;
 	
 	return 0;
 }
