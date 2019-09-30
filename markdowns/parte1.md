@@ -29,10 +29,10 @@ class MiClase
 int main()
 {
     int var = 250;  //Una variable cualquiera
-    int *ptr_var = &var;  //Apuntando un puntero a la variable
+    int *ptr_var = &var;  //Apuntando un puntero a la variable var
     
     MiClase obj;  //Un objeto cualquiera
-    MiClase *ptr_obj = &obj;
+    MiClase *ptr_obj = &obj;  //Apuntando un puntero al objeto obj
     
     cout<<"Valor de la variable var: "<<var<<endl;
     cout<<"Direccion de la variable var: "<<&var<<endl;
@@ -43,6 +43,34 @@ int main()
     return 0;
 }
 ```
+Se puede acceder mediante el puntero al valor que está almacenado en la dirección de memoria (la que está almacenada en el puntero por supuesto) utilizando el operador `*`. Pruebe el ejemplo a continuación:
+
+```C++ runnable
+#include<iostream>
+using namespace std;
+
+int main()
+{
+    float var = 33.66;  //Una variable cualquiera
+    float *ptr_var = &var;  //Apuntando un puntero a la variable var
+    
+    cout<<"Valor de la variable var: "<<var<<endl;
+    cout<<"Direccion de la variable var: "<<&var<<endl;
+    cout<<"Valor de lo que hay almacenado en la direccion de memoria "<<ptr_var<<" : "<<*ptr_var<<endl;
+    return 0;
+}
+```
+
+
+
+
+
+
+
+
+
+
+
 
 
 
