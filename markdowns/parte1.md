@@ -12,4 +12,40 @@ Se puede declarar un puntero para almacenar la dirección de memoria correspondi
 int *puntero_a_int;
 float *puntero_a_float;
 ClaseA *puntero_a_objeto_claseA;
-````
+```
+Para apuntar un puntero a una variable se utilizan el operador de asignación `=`, el operador `&` y la variable a la que se quiere apuntar. Con el operador `&` se obtiene la dirección de la variable y se le asigna al puntero mediante el operador de asignación `=`. Observe, ejecute y analice el ejemplo a continuación:
+
+```C++ runnable
+#include<iostream>
+using namespace std;
+
+int main()
+{
+    int var = 250;  //Una variable cualquiera
+    int *ptr_var = &var;  //Apuntando un puntero a la variable
+    
+    cout<<"Valor de la variable var: "<<var<<endl;
+    cout<<"Direccion de la variable var: "<<&var<<endl;
+    cout<<"Direccion almacenada en el puntero ptr_var: "<<ptr_var<<endl;
+    return 0;
+}
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
