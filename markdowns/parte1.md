@@ -97,7 +97,10 @@ int main()
 # Aritmética de punteros
 
 ```C++ runnable
+#include<iostream>
+using namespace std;
 
+/* Estructura con miembros de distintos tipos de datos */
 struct Clase
 {
 	char mem1 = 'D';
@@ -113,11 +116,26 @@ struct Clase
 int main()
 {
 
-    struct Clase local_struct; 
+    struct Clase local_struct; // Estructura local de tipo struct Clase
 	
-	struct Clase *ptr_str = &local_struct;
+	struct Clase *ptr_str = &local_struct; // Puntero a variables (objetos) del tipo de la estructura struct Clase
 	
-	cout<<*(((char*)ptr_str))<<endl;
+	/* Acceso a través del puntero ptr_str a los miembros de local_struct,
+	   mediante conversion explicita (casting) y aritmetica de punteros */
+	   
+	/* 1. El puntero ptr_str que es del tipo *struct Clase
+	   debe convertirse a un puntero del tipo de dato al que se quiere acceder,
+	   por ejemplo: a un dato char, entonces se debe convertir asi (char*)ptr_str */
+	   
+	/* 2. Con el operador asterisco se debe acceder al valor almacenado en la dirección
+	   a la que apunta el puntero ptr_str convertido: *((char*)ptr_str) */
+	   
+	/* 3. Con aritmetica de punteros se puede desplazar al puntero ptr_str a traves de 
+	   las posiciones de memoria donde se almacenan los miembros de la estructura, por
+	   ejemplo: *((double*)ptr_str+1) */
+	   
+	   
+	cout<<*((char*)ptr_str)<<endl;  
 	cout<<*(((double*)ptr_str+1))<<endl;
 	cout<<*(((short*)ptr_str+8))<<endl;
 	cout<<*(((float*)ptr_str+5))<<endl;
