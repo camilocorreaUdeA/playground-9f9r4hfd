@@ -79,6 +79,7 @@ class MiClase
     public:
     MiClase(int n):x(n){}
     void printX(){cout<<"El valor de x es: "<<x<<endl;}
+    void setX(int a){x = a;}
 };
 
 int main()
@@ -86,8 +87,10 @@ int main()
     MiClase obj(15);  //Un objeto cualquiera
     MiClase *ptr_obj = &obj;  //Apuntando un puntero al objeto obj
     
-    obj.printX(); // Acceso a un miembro a través del objeto
+    obj.printX(); //Acceso a un miembro a través del objeto
     ptr_obj->printX();  //Accesso a un miembro a través del puntero
+    ptr_obj->setX(66); //Accesso a un miembro a través del puntero
+    obj.printX(); //Acceso a un miembro a través del objeto
     return 0;
 }
 ```
