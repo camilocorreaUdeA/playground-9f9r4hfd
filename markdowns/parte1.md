@@ -96,7 +96,7 @@ int main()
 ```
 # Aritmética de punteros
 
-Los punteros almacenan un valor que corresponde a una dirección de memoria y el lenguaje de programación C++ permite que un puntero pueda recibir una nueva dirección de memoria, es decir que sea apuntado a otra variable. Es claro que esto último solo se prodra lograr si la nueva posición de memoria almacena un dato del mismo tipo del puntero o sí se hace una conversión explícita del tipo de dato del puntero. Para poder desplazar un puntero por la memoria C++ permite ejecutar los operadores de adición y sustracción en los punteros, por tanto la dirección que almacena el puntero se puede incrementar o decrementar de acuerdo a la operación que se involucre al puntero. Está permitido el uso de los siguientes operadores: `+`, `-`, `++` y `--` para ejecutar operaciones de aritmética de punteros. Observe el siguiente ejemplo que ilustra el concepto:
+Los punteros almacenan un valor que corresponde a una dirección de memoria y el lenguaje de programación C++ permite que un puntero pueda recibir una nueva dirección de memoria, es decir que sea apuntado a otra variable. Es claro que esto último solo se prodra lograr si la nueva posición de memoria almacena un dato del mismo tipo del puntero o sí se hace una conversión explícita del tipo de dato del puntero. Para poder desplazar un puntero por la memoria C++ permite ejecutar los operadores de adición y sustracción en los punteros, por tanto la dirección que almacena el puntero se puede incrementar o decrementar de acuerdo a la operación que se involucre al puntero. Está permitido el uso de los siguientes operadores: `+`, `-`, `++` y `--` para ejecutar operaciones de aritmética de punteros. Observe el siguiente ejemplo que ilustra el concepto. Puede observar la diferencia entre las direcciones de memoria cada vez que se hace un aumento en la dirección del puntero:
 
 ```C++ runnable
 #include<iostream>
@@ -118,6 +118,7 @@ int main()
 }
 
 ```
+Ejecute y analice el ejemplo a continuación. ¿Puede explicar los incrementos que se hacen al puntero? ¿Por qué se incrementa el puntero en esas cantidades aún sabiendo que los miembros de la estructura están en posiciones contiguas de memoria?
 
 ```C++ runnable
 #include<iostream>
