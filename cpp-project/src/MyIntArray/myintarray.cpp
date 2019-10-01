@@ -34,10 +34,10 @@ int MyIntArray::longitud()
     return ocupado;
 }
 
-int MyIntArray::operator[](int pos)
+int& MyIntArray::operator[](int pos)
 {
-    if(pos>=ocupado) //Error, posicion sin elementos
-        return -1;
+    if(pos>=ocupado) //Error, posicion por fuera de la longitud del arreglo
+        throw("Error");
     
     return array[pos];
 }
