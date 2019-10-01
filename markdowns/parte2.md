@@ -28,5 +28,39 @@ int main()
     return 0;
 }
 ```
+# Reserva y liberación de memoria en Clases
+
+Se puede realizar reserva dinámica de memoria para miembros de clase. En general, se declara un puntero del tipo de dato que se va a alojar en la memoria, en el constructor de la clase se realiza la reserva con los operadores `new` y `new[]` y finalmente se libera la memoria en el destructor de la clase con los operadores `delete` y `delete[]` por tanto la memoria reservada por el objeto se libera momentos antes de la destrucción del mismo. Observe el siguiente ejemplo:
+
+```C++ runnable
+#include<iostream>
+using namespace std;
+
+class MiClase
+{
+    int *ptr = nullptr;
+    public: 
+    MiClase():ptr(new int(0)){} // Constructor por defecto, la sintaxis equivale a *ptr = 0
+    MiClase(int a):ptr(new int(a)){} // Constructor parametrizado, la sintaxis equivale a *ptr = a
+    MiClase(const MiClase &c):ptr(new int(*(c.ptr))){} // Constructor de copia, la sintaxis equivale a *ptr = *(c.ptr)
+    ~MiClase(){delete ptr;} // Liberando la memoria en el destructor
+    void showMemory(){cout<<"*ptr = "<<*ptr<<endl;}
+
+};
+
+int main()
+{
+    MiClase o1;
+    MiClase o2(10);
+    MiClase o3(o2);
+    o1.showMemory();
+    o2.showMemory();
+    o3.showMemory();
+
+    return 0;
+}
+```
+
+
 
 
