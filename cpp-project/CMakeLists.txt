@@ -1,4 +1,4 @@
 cmake_minimum_required (VERSION 2.6)
-project (universe)
-add_executable(universe src/UniverseTest.cpp src/Exercises/Universe.h src/Exercises/Universe.cpp)
+project (myintarray)
+add_executable(myintarray src/MyIntArray/myintarray.h src/MyIntArray/myintarray.cpp src/MyIntArray/main.cpp)
 
