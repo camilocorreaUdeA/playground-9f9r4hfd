@@ -14,7 +14,7 @@ class MyIntArray
     ~MyIntArray();
     int longitud();
     void agregarElemento(int elem);
-    int operator[](int pos);
+    int& operator[](int pos);
 };
 
 #endif
