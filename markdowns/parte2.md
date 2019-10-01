@@ -62,6 +62,105 @@ int main()
 ```
 <b>DATO IMPORTANTE:</b> Cuando se tienen punteros para reservas dinámicas de memoria como miembros de clase es obligatorio definir el constructor de copia ya que de no hacerlo, al hacer una copia de un objeto se realiza una copia superficial (shallow copy) de estos miembros por parte del constructor de copia por defecto, lo cual en sí podría no representar un problema cuando se hace de manera consciente. Pero si se hace de manera involuntaria podría resultar en un comportamiento indefinido de la aplicación (undefined behaviour) cuando los objetos son destruidos. Ya que al destruir uno de ellos se libera la memoria del puntero y por tanto también se ve afectado el puntero del objeto copia, y al este último ser destruido estaría tratando de liberar por segunda ocasión memoria de un puntero que ya había sido liberada cuando se destruyo el primer objeto.
 
+Ejemplo:
+```C++ runnable
+#include<iostream>
+using namespace std;
+
+class MyIntArray
+{
+    int ocupado, tam_max;
+    int *array = nullptr;
+    void alloc_new();
+    public:
+    MyIntArray();
+    MyIntArray(int tam);
+    MyIntArray(const MyIntArray &c);
+    ~MyIntArray();
+    int longitud();
+    void agregarElemento(int elem);
+    void agregarMemoria(int e);
+    int operator[](int pos);
+};
+
+MyIntArray::MyIntArray()
+{
+    tam_max = 20; // Longitud por defecto del arreglo
+    array = new int[tam_max];
+    ocupado = 0;
+}
+
+MyIntArray::MyIntArray(int tam)
+{
+    tam_max = tam; // Longitud del arreglo
+    array = new int[tam_max];
+    ocupado = 0;
+}
+
+MyIntArray::MyIntArray(const MyIntArray &c)
+{
+    tam_max = c.tam_max; // Longitud del otro arreglo
+    array = new int[tam_max];
+    ocupado = c.ocupado; //Cuanto se ha utilizado en el otro arreglo
+    for(int i=0; i<ocupado; ++i) //Copiando los elementos del otro arreglo
+        *(array + i) = *(c.array + i);
+}
+
+MyIntArray::~MyIntArray() 
+{
+    delete[] array; //Liberando la memoria reservada
+}
+
+int MyIntArray::longitud()
+{
+    return ocupado;
+}
+
+int MyIntArray::operator[](int pos)
+{
+    if(pos>=ocupado) //Error, posicion sin elementos
+        return -1;
+    
+    return array[pos];
+}
+
+void MyIntArray::agregarMemoria(int e)
+{
+    tam_max += 5; // Agregando capacidad extra al vector
+    int *temporal = new int[tam_max]; // Arreglo temporal
+    for(int i=0; i<ocupado; ++i) //Copiando los elementos en el arreglo temporal
+        *(temporal + i) = *(array + i);
+    *(temporal + ocupado) = e;
+    delete[] array; //Liberando la memoria
+    array = temporal; //Apuntando array a la direccion de memoria de temporal
+    ocupado++;
+}
+
+void MyIntArray::agregarElemento(int elem)
+{
+    if((ocupado + 1) >= tam_max)
+        agregarMemoria(elem);
+    else
+    {
+        *(array + ocupado) = elem;
+        ocupado++;
+    }
+}
+
+int main()
+{
+    MyIntArray arreglo(10);
+    for(int i=1; i<11; ++i)
+        arreglo.agregarElemento(i);
+    cout<<arreglo.longitud()<<endl;
+    cout<<arreglo[5]<<endl;
+    arreglo.agregarElemento(12);
+    cout<<arreglo.longitud()<<endl;
+    cout<<arreglo[11]<<endl;
+    return 0;
+}
+```
+
 
 
 
