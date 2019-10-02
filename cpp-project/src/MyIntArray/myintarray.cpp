@@ -34,7 +34,7 @@ int MyIntArray::longitud()
     return ocupado;
 }
 
-int& MyIntArray::operator[](int pos)
+int& MyIntArray::operator[](int pos) //Sobrecarga del operador [] para leer o modificar elementos del arreglo
 {
     if(pos>=ocupado) //Error, posicion por fuera de la longitud del arreglo
         throw("Error");
