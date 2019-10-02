@@ -173,9 +173,28 @@ int main()
 ```
 # Puntero `this`
 
+El puntero `this` es un miembro privado puntero que tienen de manera implícita todas las clases en C++. Este puntero almacena la dirección de memoria asignada al objeto del cual es miembro. Para una clase X el puntero `this` es de tipo X* y solo puede ser invocado por miembros no-estáticos de la clase (recuerde que los miembros estáticos no necesitan de una instancia de clase para ser invocados)
 
+Usos principales del puntero `this`:
+<ul>
+<li>Es una práctica generalizada el uso del puntero `this` para referenciar variables de la clase que tienen el mismo nombre de los parámetros de entrada o de variables locales de los métodos de la clase. Ejemplo:</li>
 
+```cpp
+class MyClass
+{
+    int x, y;
+    public:
+    void setX(int x)
+    {
+        int y = 25;
+        this->x = x;
+        this->y = y;
+    }
+};
 
+<li></li>
+</ul>
+```
 
 
 
