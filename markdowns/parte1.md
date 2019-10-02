@@ -177,7 +177,7 @@ El puntero `this` es un miembro privado puntero que tienen de manera implícita 
 
 Usos principales del puntero `this`:
 <ul>
-<li>Es una práctica generalizada el uso del puntero `this` para referenciar variables de la clase que tienen el mismo nombre de los parámetros de entrada o de variables locales de los métodos de la clase. Ejemplo:</li>
+<li>Es una práctica generalizada el uso del puntero `this` para referenciar variables de la clase que tienen el mismo nombre de los parámetros de entrada o de variables locales de los métodos de la clase (Con el fin de resolver ambigüedades). Ejemplo:</li>
 
 ```cpp
 class MyClass
@@ -192,7 +192,41 @@ class MyClass
     }
 };
 ```
-<li></li>
+<li>Para retornar una referencia al objeto a través de uno de sus métodos. Esto con el fin de permitir el encadenamiento de llamados a distintos métodos de un mismo objeto</li>
+```cpp
+class CustomIntStack
+{
+    int array[20];
+    int cuenta = 0;
+    public:
+    CustomIntStack& operator<<(int elem)
+    {
+        if(cuenta < 20)
+        {
+            array[cuenta] = elem;
+            cuenta++;
+        }
+        else
+            cout<<"Stack esta lleno!!!"<<endl;
+            
+        return *this;
+    }
+    void printInfo()
+    {
+        for(int i=0; i<7; ++i)
+            cout<<array[i]<<endl;
+    }
+};
+
+int main()
+{
+    CustomIntStack myStack;
+    myStack<<1<<2<<3<<4<<5<<6<<7; //Agregando elementos al stack
+    myStack.printInfo();
+    
+    return 0;
+}
+```
 </ul>
 
 
