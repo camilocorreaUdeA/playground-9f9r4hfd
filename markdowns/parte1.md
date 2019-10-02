@@ -193,6 +193,7 @@ class MyClass
 };
 ```
 <li>Para retornar una referencia al objeto a través de uno de sus métodos. Esto con el fin de permitir el encadenamiento de llamados a distintos métodos de un mismo objeto</li>
+
 ```cpp
 class CustomIntStack
 {
