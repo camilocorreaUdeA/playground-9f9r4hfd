@@ -54,7 +54,7 @@ void MyIntArray::agregarMemoria(int e)
     ocupado++;
 }
 
-void MyIntArray::agregarElemento(int elem)
+void MyIntArray::agregarElemento(int elem) //Agrega un nuevo elemento al final del arreglo
 {
     if((ocupado + 1) >= tam_max)
         agregarMemoria(elem);
