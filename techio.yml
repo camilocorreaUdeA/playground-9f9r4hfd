@@ -4,6 +4,8 @@ plan:
   statement: markdowns/parte1.md
 - title:  Asignación y liberación dinámica de memoria
   statement: markdowns/parte2.md
+- title:  Polimorfismo
+  statement: markdowns/parte3.md
 projects:
   cpp:
     root: /cpp-project
