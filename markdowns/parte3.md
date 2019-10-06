@@ -132,6 +132,7 @@ int main()
     static_cast<Base *>(ptr)->MetodoTwo();
     return 0;
 }
+```
 
 
 
