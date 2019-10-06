@@ -29,7 +29,7 @@ class Base
     }
 };
 
-class Derivada
+class Derivada:public Base
 {
     public:
     void MetodoOne()
