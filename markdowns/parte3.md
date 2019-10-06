@@ -25,7 +25,7 @@ class Base
     }
     void MetodoTwo()
     {
-        cout<<"Clase Base MetodoOne"<<endl;
+        cout<<"Clase Base MetodoTwo"<<endl;
     }
 };
 
@@ -38,7 +38,7 @@ class Derivada
     }
     void MetodoTwo()
     {
-        cout<<"Clase Derivada MetodoOne"<<endl;
+        cout<<"Clase Derivada MetodoTwo"<<endl;
     }
 };
 
