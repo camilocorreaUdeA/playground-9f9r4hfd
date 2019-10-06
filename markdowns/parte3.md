@@ -50,6 +50,48 @@ int main()
     return 0;
 }
 ```
+El resultado de la ejecución del código anterior se entiende así: en el caso del llamado a MetodoOne, al ser este una redefinición de un método virtual, entonces se busca en la tabla virtual y se ejecuta el que corresponde a la clase derivada. En el caso del llamado a MetodoTwo, por no ser una redefinición de un método virtual entonces C++ ejecuta el método que corresponde al tipo del puntero, en este caso la clse Base, ya que no está pendiente del tipo que se almacena en el puntero sino del tipo del puntero.
+
+De todas formas siempre es posible invocar al método virtual de la clase base y evitar que siempre se haga la búsqueda del método de la clase derivada en la tabla virtual. Esto es posible mediante el uso de un operador de conversión explicíta, el operador `static_cast<>()` que lo que hace es deshabilitar el proceso de "dynamic binding" convirtiendolo en un proceso de "static binding" de modo que la decisión ya no se hace en tiempo de ejecución sino en tiempo de compilación. Observe el siguiente ejemplo:
+
+```C++ runnable
+#include<iostream>
+using namespace std;
+
+class Base
+{
+    public:
+    virtual void MetodoOne()
+    {
+        cout<<"Clase Base MetodoOne"<<endl;
+    }
+    void MetodoTwo()
+    {
+        cout<<"Clase Base MetodoTwo"<<endl;
+    }
+};
+
+class Derivada:public Base
+{
+    public:
+    void MetodoOne()
+    {
+        cout<<"Clase Derivada MetodoOne"<<endl;
+    }
+    void MetodoTwo()
+    {
+        cout<<"Clase Derivada MetodoTwo"<<endl;
+    }
+};
+
+int main()
+{
+    Base *ptr = new Derivada; //Puntero de clase Base a un objeto de clase Derivada
+    static_cast<Base *>(ptr)->MetodoOne();
+    ptr->MetodoTwo();
+    return 0;
+}
+```
 
 
 
