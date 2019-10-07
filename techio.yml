@@ -6,6 +6,8 @@ plan:
   statement: markdowns/parte2.md
 - title:  Polimorfismo
   statement: markdowns/parte3.md
+- title:  Operadores static_cast<>() y dymanic_cast<>()
+  statement: markdowns/parte4.md
 projects:
   cpp:
     root: /cpp-project
