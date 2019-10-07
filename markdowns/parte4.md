@@ -106,7 +106,7 @@ class Derivada:public Base
     virtual void printHola(){cout<<"Hola Derivada"<<endl;}
 };
 
-class Deriderivada:public Derivada
+class Deriderivada:public Base
 {
     public:
     virtual void printHola(){cout<<"Hola Deriderivada"<<endl;}
@@ -115,12 +115,9 @@ class Deriderivada:public Derivada
 void printHola(Base* obj)
 {
     /* Punteros para almacenar el retorno del operador dynamic_cast */
-    Base *ptr1 = nullptr;
     Derivada *ptr2 = nullptr;
     Deriderivada *ptr3 = nullptr;
     
-    if(ptr = dynamic_cast<Base *>(obj))
-        ptr->printHola();
     if(ptr2 = dynamic_cast<Derivada *>(obj))
         ptr2->printHola();
     if(ptr3 = dynamic_cast<Deriderivada *>(obj))
@@ -132,9 +129,9 @@ int main()
     Base *ptr = new Derivada;
     printHola(ptr);
     delete ptr;
-    Base *ptr = new Deriderivada;
-    printHola(ptr);
-    delete ptr;
+    Base *ptr2 = new Deriderivada;
+    printHola(ptr2);
+    delete ptr2;
     
     return 0;
 }
