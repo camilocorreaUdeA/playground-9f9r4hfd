@@ -91,6 +91,7 @@ int main()
     Base *ptr = new Derivada; //Puntero de clase Base a un objeto de clase Derivada
     ptr->MetodoOne();
     static_cast<Derivada *>(ptr)->MetodoTwo();
+    delete ptr;
     return 0;
 }
 ```
@@ -132,6 +133,7 @@ int main()
     Derivada *ptr = new Derivada; //Puntero de clase Base a un objeto de clase Derivada
     ptr->MetodoOne();
     static_cast<Base *>(ptr)->MetodoTwo(); //Operación de upcasting para llamar al método de la clase base
+    delete ptr;
     return 0;
 }
 ```
