@@ -53,6 +53,37 @@ int main()
 ```
 El resultado de la ejecución del código anterior se entiende así: en el caso del llamado a MetodoOne, al ser este una redefinición de un método virtual, entonces se busca en la tabla virtual y se ejecuta el que corresponde a la clase derivada. En el caso del llamado a MetodoTwo, por no ser una redefinición de un método virtual entonces C++ ejecuta el método que corresponde al tipo del puntero, en este caso la clase Base, ya que no está pendiente del tipo que se almacena en el puntero sino del tipo del puntero.
 
+# Destructor virtual
+
+Se mencionó que cuando se apunta un puntero de la clase base a un objeto de la clase derivada entonces C++ invoca los métodos no-virtuales de la clase base y busca en la tabla virtual las redefiniciones de los métodos virtuales. Lo mismo le sucede al destructor de la clase, si no se específica que el destructor sea virtual entonces C++ solo invoca el destructor de la clase base que es el tipo del puntero, esto configura una fuga de memoria "memory leak" ya que el operador `new` retorna un puntero a una reserva de memoria para un objeto del tipo de la clase derivada, dicha memoria no es liberada cuando se libera el puntero de la clase base. Por esto último es necesario que al implementar un polimorfismo dinámico el destructor de la clase base sea virtual. En el siguiente código de ejemplo ejecute usando la firma del destructor que no incluye la palabra `virtual` y la que si la incluye y observe la diferencia en el resultado de la ejecución:
+
+```C++ runnable
+#include<iostream>
+using namespace std;
+
+class Base
+{
+    public:
+    Base(){cout<<"Constructor Base"<<endl;}
+    ~Base(){cout<<"Destructor Base"<<endl;} //No virtual
+    //virtual ~Base(){cout<<"Destructor Base"<<endl;} //Virtual
+};
+
+class Derivada:public Base
+{
+    public:
+    Derivada(){cout<<"Constructor Derivada"<<endl;}
+    ~Derivada(){cout<<"Destructor Derivada"<<endl;}
+};
+
+int main()
+{
+    Base *ptr = new Derivada; //Puntero de clase Base a un objeto de clase Derivada
+    delete ptr;
+    return 0;
+}
+```
+
 # Operador `static_cast<>()`
 
 Este operador simplemente ejecuta una conversión explícita de un objeto desde una clase hacia otra. Solo es posible entre clases que estén relacionadas por herencia, es decir, se puede utilizar para hacer conversión de un objeto de clase base a una de sus clases derivadas ("downcasting") o bien para convertir un objeto de una clase derivada a su clase base ("upcasting"). En el caso de polimorfismo dinámico, cuando se usan métodos virtuales, es útil cuando se quiere hacer llamados a métodos a no-virtuales que fueron redefinidos en las clases derivadas. A esta operación en general se le conoce como "downcasting". Observe el siguiente ejemplo:
