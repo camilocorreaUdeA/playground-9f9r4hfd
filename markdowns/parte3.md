@@ -143,6 +143,38 @@ class Derivada:public Base
     }
 };
 ```
+La palabra reservada `final` tiene dos connotaciones, la primera tiene que ver con el tema de herencia y la segunda con los métodos virtuales de una clase. En el primer caso, cuando una clase en su definición va acompañada del especificador `final` esto quiere decir que se prohibe la posibilidad de hacer herencias de esa clase. En el segundo caso, la palabra `final` se utiliza para evitar que un método virtual pueda ser redefinido en una clase heredera. Observe el resultado de la ejecución del siguiente ejemplo:
+
+```C++ runnable
+#include<iostream>
+using namespace std;
+
+class Base1 final
+{
+};
+
+class Base2
+{
+    virtual void foo() final{}
+};
+
+class Derivada1:public Base1
+{
+};
+
+class Derivada2:public Base2
+{
+    void foo(){}
+};
+
+int main()
+{
+    
+    Derivada1 obj1;
+    Derivada2 obj2;
+    return 0;
+}
+```
 
 # Operador `static_cast<>()`
 
