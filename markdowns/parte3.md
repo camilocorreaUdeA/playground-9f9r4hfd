@@ -97,7 +97,7 @@ class Base
     public:
     Base(){cout<<"Constructor Base"<<endl;}
     Base(const Base &b){cout<<"Constructor Base"<<endl;}
-    virtual Base* Clonacion() = 0; //Metodo virtual puro
+    virtual Base* Clonacion() = 0; //Metodo virtual puro de clonación
     virtual ~Base(){cout<<"Destructor Base"<<endl;} //Virtual
 };
 
@@ -106,7 +106,7 @@ class Derivada:public Base
     public:
     Derivada(){cout<<"Constructor Derivada"<<endl;}
     Derivada(const Derivada &d){cout<<"Constructor Derivada"<<endl;}
-    Base* Clonacion(){return new Derivada(*this);}
+    Base* Clonacion(){return new Derivada(*this);} //Metodo de clonación en la clase derivada
     ~Derivada(){cout<<"Destructor Derivada"<<endl;}
 };
 
@@ -114,7 +114,7 @@ int main()
 {
     Base *ptr = new Derivada; 
     //Base *ptr2 = new Derivada(*ptr); //Intentando copia (Error!)
-    Base *ptr2 = ptr->Clonacion();
+    Base *ptr2 = ptr->Clonacion(); //Clonando el objeto (Bien!)
     delete ptr;
     return 0;
 }
