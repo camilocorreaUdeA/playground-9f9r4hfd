@@ -63,7 +63,7 @@ int main()
 <b>DATO IMPORTANTE:</b> Cuando se tienen punteros para reservas dinámicas de memoria como miembros de clase es obligatorio definir el constructor de copia ya que de no hacerlo, al hacer una copia de un objeto se realiza una copia superficial (shallow copy) de estos miembros por parte del constructor de copia por defecto, lo cual en sí podría no representar un problema cuando se hace de manera consciente. Pero si se hace de manera involuntaria podría resultar en un comportamiento indefinido de la aplicación (undefined behaviour) cuando los objetos son destruidos. Ya que al destruir uno de ellos se libera la memoria del puntero y por tanto también se ve afectado el puntero del objeto copia, y al este último ser destruido estaría tratando de liberar por segunda ocasión memoria de un puntero que ya había sido liberada cuando se destruyo el primer objeto.
 
 Ejemplo:
-@[Ejemplo manejo dinámico de memoria en C++]({"stubs": ["src/MyIntArray/myintarray.h", "src/MyIntArray/myintarray.cpp", "src/MyIntArray/main.cpp"],"command": "sh /project/target/run.sh"})
+@[Ejemplo: Arreglo de tamaño dinámico en C++]({"stubs": ["src/MyIntArray/myintarray.h", "src/MyIntArray/myintarray.cpp", "src/MyIntArray/main.cpp"],"command": "sh /project/target/run.sh"})
 
 
 
