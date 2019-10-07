@@ -210,7 +210,7 @@ class CustomIntStack
         else
             cout<<"Stack esta lleno!!!"<<endl;
             
-        return *this;
+        return *this; //En este caso no retorna referencia sino el objeto mismo
     }
     void printInfo()
     {
@@ -232,30 +232,3 @@ int main()
 }
 ```
 </ul>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
