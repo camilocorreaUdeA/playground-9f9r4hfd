@@ -149,22 +149,22 @@ La palabra reservada `final` tiene dos connotaciones, la primera tiene que ver c
 #include<iostream>
 using namespace std;
 
-class Base1 final
+class Base1 final  //Clase final, no se puede heredar de ella
 {
 };
 
 class Base2
 {
-    virtual void foo() final{}
+    virtual void foo() final{}  //Método final, no puede ser redefinido en clases herederas
 };
 
-class Derivada1:public Base1
+class Derivada1:public Base1 //Error!
 {
 };
 
 class Derivada2:public Base2
 {
-    void foo(){}
+    void foo(){} //Error!
 };
 
 int main()
