@@ -127,10 +127,12 @@ void printHola(Base* obj)
 int main()
 {
     Base *ptr = new Derivada;
-    printHola(ptr);
-    delete ptr;
     Base *ptr2 = new Deriderivada;
+    
+    printHola(ptr);
     printHola(ptr2);
+    
+    delete ptr;
     delete ptr2;
     
     return 0;
