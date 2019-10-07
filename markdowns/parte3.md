@@ -84,6 +84,39 @@ int main()
 }
 ```
 
+# Polimorfismo dinámico y el constructor de copia
+
+El polimorfismo tiene un problema con el constructor de copia.
+
+```C++ runnable
+#include<iostream>
+using namespace std;
+
+class Base
+{
+    public:
+    Base(){cout<<"Constructor Base"<<endl;}
+    Base(const Base &b){cout<<"Constructor Base"<<endl;}
+    virtual ~Base(){cout<<"Destructor Base"<<endl;} //Virtual
+};
+
+class Derivada:public Base
+{
+    public:
+    Derivada(){cout<<"Constructor Derivada"<<endl;}
+    Derivada(const Derivada &d){cout<<"Constructor Derivada"<<endl;}
+    ~Derivada(){cout<<"Destructor Derivada"<<endl;}
+};
+
+int main()
+{
+    Base *ptr = new Derivada; 
+    Base *ptr2 = new Derivada(*ptr); //Intentando copia
+    delete ptr;
+    return 0;
+}
+```
+
 # Operador `static_cast<>()`
 
 Este operador simplemente ejecuta una conversión explícita de un objeto desde una clase hacia otra. Solo es posible entre clases que estén relacionadas por herencia, es decir, se puede utilizar para hacer conversión de un objeto de clase base a una de sus clases derivadas ("downcasting") o bien para convertir un objeto de una clase derivada a su clase base ("upcasting"). En el caso de polimorfismo dinámico, cuando se usan métodos virtuales, es útil cuando se quiere hacer llamados a métodos a no-virtuales que fueron redefinidos en las clases derivadas. A esta operación en general se le conoce como "downcasting". Observe el siguiente ejemplo:
