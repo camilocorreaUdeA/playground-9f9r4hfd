@@ -214,8 +214,11 @@ class CustomIntStack
     }
     void printInfo()
     {
-        for(int i=0; i<7; ++i)
-            cout<<array[i]<<endl;
+        if(cuenta > 0)
+        {
+            for(int i=0; i<cuenta; ++i)
+                cout<<array[i]<<endl;
+        }
     }
 };
 
