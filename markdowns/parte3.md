@@ -47,6 +47,7 @@ int main()
     Base *ptr = new Derivada; //Puntero de clase Base a un objeto de clase Derivada
     ptr->MetodoOne();
     ptr->MetodoTwo();
+    delete ptr;
     return 0;
 }
 ```
