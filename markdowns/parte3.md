@@ -120,7 +120,29 @@ int main()
 }
 ```
 
-`override` y `final`
+# `override` y `final`
+
+La palabra `override` no es una palabra reservada del lenguaje C++, es un especificador que sirve para indicar que un método de una clase derivada es una definición o una redefinición de un método virtual (puro) de la clase base. No puede utilizarse `override` con métodos que no son redefiniciones o definiciones de métodos virtuales. El siguiente fragmento de código ilustra la utilización de `override`:
+
+```cpp
+class Base
+{
+    public:
+    virtual void myMethod()
+    {
+        //código del método
+    }
+};
+
+class Derivada:public Base
+{
+    public:
+    void myMethod() override  //Indica que este método es una redefinición de un método virtual heredado
+    {
+        //código redefinición
+    }
+};
+```
 
 # Operador `static_cast<>()`
 
