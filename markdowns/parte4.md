@@ -84,5 +84,82 @@ int main()
     return 0;
 }
 ```
+Desafortunadamente, cuando se usa `static_cast` el compilador no puede comprobar si la conversión que se está tratando de hacer es correcta, es decir si no se está haciendo entre clases incompatibles que tienen una clase base como ancestro en común. Para verificar y validar si se hace una conversión adecuada existe el operador `dynamic_cast<>()`
+
+# Operador `dynamic_cast<>()`
+
+Este operador sirve para identificar si un puntero involucrado en un polimorfismo puede ser convertido a cierto tipo de clase (clases derivadas). Se usa particularmente cuando en una función se pasa como parámetro un objeto polimorfico, es decir, un parámetro formal del tipo de la clase base que conlleva a un parámetro real del tipo de una clase derivada. Esto tiene como objetivo hacer que las funciones y métodos puedan ser más genéricos y se pueda definir un solo método que trabaje con objetos de distinto tipo al mismo tiempo. El operador `dynamic_cast<>()` retorna un puntero si se comprueba que la conversión es correcta, de otro modo retorna un puntero a `NULL`. Observe y ejecute el siguiente ejemplo en el que se implementa una función polimorfica (genérica):
+
+```C++ runnable
+#include<iostream>
+using namespace std;
+
+class Base
+{
+    public:
+    virtual void printHola(){cout<<"Hola Base"<<endl;}
+};
+
+class Derivada:public Base
+{
+    public:
+    virtual void printHola(){cout<<"Hola Derivada"<<endl;}
+};
+
+class Deriderivada:public Derivada
+{
+    public:
+    virtual void printHola(){cout<<"Hola Deriderivada"<<endl;}
+};
+
+void printHola(Base* obj)
+{
+    /* Punteros para almacenar el retorno del operador dynamic_cast */
+    Base *ptr1 = nullptr;
+    Derivada *ptr2 = nullptr;
+    Deriderivada *ptr3 = nullptr;
+    
+    if(ptr = dynamic_cast<Base *>(obj))
+        ptr->printHola();
+    if(ptr2 = dynamic_cast<Derivada *>(obj))
+        ptr2->printHola();
+    if(ptr3 = dynamic_cast<Deriderivada *>(obj))
+        ptr3->printHola();
+}
+
+int main()
+{
+    Base *ptr = new Derivada;
+    printHola(ptr);
+    delete ptr;
+    Base *ptr = new Deriderivada;
+    printHola(ptr);
+    delete ptr;
+    
+    return 0;
+}
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
