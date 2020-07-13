@@ -13,6 +13,6 @@ int main()
     cout<<arreglo[5]<<endl;
     arreglo.agregarElemento(12);
     cout<<arreglo.longitud()<<endl;
-    cout<<arreglo[11]<<endl;
+    cout<<arreglo[10]<<endl;
     return 0;
 }
